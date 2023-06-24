@@ -26,7 +26,7 @@ const flightsQueriesCreator = async (flights) => {
   let flightQueries = '';
   flights.map(flight => {
     let { airplane, origin, destination, departure, arrival, flightMiles } = flight;
-    flightQueries += `insert into flight(airplane, origin, destination, departure, arrival, flightMiles) values("${airplane}","${origin}","${destination}","${departure}","${arrival}", ${flightMiles})`
+    flightQueries += `insert into flight(airplane, origin, destination, departure, arrival, flightMiles) values("${airplane}","${origin}","${destination}","${departure}","${arrival}", ${flightMiles});`
   })
 
   return flightQueries;
