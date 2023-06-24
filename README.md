@@ -1,4 +1,4 @@
-This projects creates the queries for databases using faker dependency and xlsx dependency to read a document with information.
+This project creates the queries for databases using faker dependency and xlsx dependency to read a document with information.
 This project has been developed in Nodejs v18.
 To install the dependencies for this project, run the command
 ```
