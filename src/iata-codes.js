@@ -1,7 +1,7 @@
 const xlsx = require('xlsx');
 
 const getIataCodes = async () => {
-  const streamData = xlsx.readFile('./IATA-Codes.csv', {type: 'string'});
+  const streamData = xlsx.readFile('./data/IATA-Codes.csv', {type: 'string'});
   const data = streamData.Sheets[streamData.SheetNames[0]];
   const jsonData = xlsx.utils.sheet_to_json(data, { header: 1 });
   const properties = jsonData.shift();
