@@ -19,9 +19,13 @@ async function booststrap() {
   const flightQueries = await flightsQueriesCreator(flights)
 
   const seedsFolder = './seeds';
-  if (!fs.readdirSync(seedsFolder)) {
+  //console.log(!!fs.readdirSync(seedsFolder))
+  try {
+    fs.readdirSync(seedsFolder)
+  } catch {
     fs.mkdirSync(seedsFolder);
   }
+
   fs.writeFileSync(`${seedsFolder}/airplanes.txt`, airplanesQueries, 'utf-8');
   fs.writeFileSync(`${seedsFolder}/flights.txt`, flightQueries, 'utf-8');
   console.log('running');
