@@ -1,11 +1,12 @@
 const fs = require('fs');
 
-const { flightFakesCreator, flightsQueriesCreator } = require('./flight');
-const { airlplanesFakeCreator, airplaneQueriesCreator } = require('./airplane');
+const { flightFakesCreator, flightsQueriesCreator } = require('./src/flight');
+const { airlplanesFakeCreator, airplaneQueriesCreator } = require('./src/airplane');
 
 async function booststrap() {
   let airplanes = [];
   let flights = [];
+
   for (let i = 0; i < 100; i++) {
     airplanes.push(airlplanesFakeCreator());
   };
@@ -17,9 +18,13 @@ async function booststrap() {
   };
   const flightQueries = await flightsQueriesCreator(flights)
 
-  fs.writeFileSync('airplanes.txt', airplanesQueries, 'utf-8');
-  fs.writeFileSync('flights.txt', flightQueries, 'utf-8');
-    console.log('running');
+  const seedsFolder = './seeds';
+  if (!fs.readdirSync(seedsFolder)) {
+    fs.mkdirSync(seedsFolder);
+  }
+  fs.writeFileSync(`${seedsFolder}/airplanes.txt`, airplanesQueries, 'utf-8');
+  fs.writeFileSync(`${seedsFolder}/flights.txt`, flightQueries, 'utf-8');
+  console.log('running');
 }
 
 booststrap();
